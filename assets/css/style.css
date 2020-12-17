@@ -1,0 +1,76 @@
+body {
+   padding: 0;
+   margin-top: 0;
+   box-sizing: border-box;
+   font-family: Poppins;
+}
+
+.kiri h2 {
+   margin-top: 20px;
+   font-size: 40px;
+}
+
+.kiri p {
+   font-size: 16px;
+   color: #EFEAE8;
+}
+
+main .kanan {
+   padding: 40px 170px 0px 170px;
+}
+
+.garis-bawah {
+   background: #ff5722;
+   height: 2px;
+   width: 84px;
+   margin: 16px auto 0;
+}
+
+.kanan label {
+   font-size: 12px;
+}
+
+.kanan .form-control-sm {
+   font-size: 12px;
+   padding: 0 10px;
+}
+
+.btn-daftar {
+   background-color: #ff5722;
+   color: #FFF;
+   padding: 8px 20px;
+   font-size: 12px;
+}
+
+.btn-daftar:hover {
+   background-color: #e04515;
+   color: #FFF;
+   padding: 8px 20px;
+   font-size: 12px;
+}
+
+/* login */
+.background {
+   background-color: #F3F3F3;
+   background-size: cover
+}
+
+
+.background-dashboard {
+   background-color: rgb(226, 147, 0);
+   background-size: cover
+}
+
+.background-sertifikat {
+   background-image: url('assets/img/background.jpg');
+}
+
+
+/* Handphone */
+
+@media (max-width: 575.98px) {
+   main .kanan {
+      padding: 20px;
+   }
+
+}

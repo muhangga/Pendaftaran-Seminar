@@ -17,7 +17,7 @@
    
 ?>
 
-<div class="container-fluid">
+<div class="container-fluid" style="margin-bottom: 400px;">
 
 <marquee behavior="scroll" srcollamount="2" class="alert alert-info mb-5">Halo, Selamat Datang <?= $_SESSION['nama']; ?> di Panel User <i class="fas fa-smile"></i></marquee>
    

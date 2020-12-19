@@ -1,7 +1,8 @@
 <?php 
    session_start();
    include ("function/koneksi.php");
-   $query = mysqli_query($koneksi, "SELECT * FROM tbl_user");
+   $id_user = $_SESSION['id_user'];
+   $query = mysqli_query($koneksi, "SELECT * FROM tbl_user WHERE id_user='$id_user'");
    $row = mysqli_fetch_assoc($query);
 ?>
 
@@ -83,12 +84,30 @@
    </a>
 </li>
 
-<li class="nav-item">
-   <a class="nav-link mb-3" href="absensi.php">
-      <i class="fas fa-fw fa-check"></i>
-      <span>Absensi Sertifikat</span>
-   </a>
-</li>
+<?php 
+   
+   $q = mysqli_query($koneksi, "SELECT * FROM tbl_daftar WHERE id_user='$id_user'");
+   $rows = mysqli_fetch_array($q);
+   $cek = mysqli_num_rows($q);
+
+   if($cek > 0) {?>
+   <li class="nav-item">
+      <a class="nav-link mb-3" href="absensi.php?id_user=<?= $row['id_user'] ?>">
+         <i class="fas fa-fw fa-check"></i>
+         <span>Absensi Sertifikat</span>
+      </a>
+   </li>
+   <?php } ?>
+
+   <!-- <?php if($cek === 0) { ?>
+      <li class="nav-item">
+      <a class="nav-link mb-3" href="dummy_absen.php?id_user=<?= $row['id_user'] ?>">
+         <i class="fas fa-fw fa-check"></i>
+         <span>Absensi Sertifikat</span>
+      </a>
+   </li>
+   <?php } ?> -->
+
 <?php endif; ?>
 
 <hr class="sidebar-divider mb-4">

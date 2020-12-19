@@ -3,9 +3,9 @@
 session_start();
 include("function/koneksi.php");
 
-$id_daftar = $_GET['id_daftar'];
+$id_sertifikat = $_GET['id_sertifikat'];
 
-$query = mysqli_query($koneksi, "SELECT * FROM tbl_daftar WHERE id_daftar='$id_daftar'");
+$query = mysqli_query($koneksi, "SELECT * FROM tbl_sertifikat WHERE id_sertifikat='$id_sertifikat'");
 $row = mysqli_fetch_assoc($query);
 
 ?>

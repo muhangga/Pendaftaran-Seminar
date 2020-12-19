@@ -14,7 +14,6 @@
 
     if (mysqli_num_rows($query) > 0) {
       $row = mysqli_fetch_array($query);
-      $rows = mysqli_fetch_array($daftar);
       
       $_SESSION['id_user'] = $row['id_user'];
       $_SESSION['nama'] = $row['nama'];

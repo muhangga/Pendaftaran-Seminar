@@ -26,7 +26,7 @@
 
       if (isset($query)) {
          echo "<script>alert('Pendaftaran Berhasil, Terimakasih sudah mendaftar!');
-                     document.location.href='dashboard_user.php';
+                     document.location.href='absensi.php';
               </script>";
       } else {
          echo "<script>alert('Daftar gagal, silahkan coba kembali!');
@@ -81,7 +81,7 @@
                   <div class="kanan">
                      <h5 class="text-center mt-5">Pendaftaran</h5>
                      <div class="garis-bawah mb-4"></div>
-                     <form action="#" method="POST">
+                     <form action="#" method="POST" id="formInp">
 
                      <input type="hidden" name="id_users" value="<?= $row['id_user']; ?>">
 
@@ -115,9 +115,9 @@
                            <label class="custom-control-label" for="perempuan">Perempuan</label>
                         </div>
 
-                        <div class="form-group mt-3" id="only_number">
+                        <div class="form-group mt-3">
                            <label for="no_hp">No Telepon</label>
-                           <input type="text" class="form-control form-control-sm" id="no_hp" name="no_hp" required>
+                           <input type="number" class="form-control form-control-sm" id="no_hp" name="no_hp" required>
                         </div>
 
                         <button type="submit" class="btn btn-daftar " name="daftar">Daftar</button>
@@ -138,15 +138,3 @@
         <script src="assets/js/scripts.js"></script>
     </body>
 </html>
-
-<script>
-    $(function() {
-      $('#only-number').on('keydown', '#number', function(e){
-          -1!==$
-          .inArray(e.keyCode,[46,8,9,27,13,110,190]) || /65|67|86|88/
-          .test(e.keyCode) && (!0 === e.ctrlKey || !0 === e.metaKey)
-          || 35 <= e.keyCode && 40 >= e.keyCode || (e.shiftKey|| 48 > e.keyCode || 57 < e.keyCode)
-          && (96 > e.keyCode || 105 < e.keyCode) && e.preventDefault()
-      });
-    })
-</script>

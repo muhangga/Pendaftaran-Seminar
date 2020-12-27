@@ -61,9 +61,16 @@
 </li>
 
 <li class="nav-item">
-   <a class="nav-link mb-3" href="data_pendaftar.php">
+   <a class="nav-link" href="data_pendaftar.php">
       <i class="fas fa-fw fa-list-alt"></i>
       <span>Data Pendaftar</span>
+   </a>
+</li>
+
+<li class="nav-item">
+   <a class="nav-link mb-3" href="data_absen.php">
+      <i class="fas fa-fw fa-check"></i>
+      <span>Data Absen</span>
    </a>
 </li>
 <?php endif; ?>
@@ -83,7 +90,6 @@
       <span>Daftar Seminar</span>
    </a>
 </li>
-
 <?php 
    
    $q = mysqli_query($koneksi, "SELECT * FROM tbl_daftar WHERE id_user='$id_user'");

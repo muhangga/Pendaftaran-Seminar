@@ -3,6 +3,10 @@
    $title['judul'] = "Dashboard";
    include "function/koneksi.php"; 
    include "component/sidebar.php"; 
+
+   if (isset($_SESSION['akses']) === "user") {
+    header("location: login.php");
+  }
    
    if (!isset($_SESSION['id_user'])) {
       header("location: login.php?pesan=belum_login");

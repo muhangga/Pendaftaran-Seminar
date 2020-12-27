@@ -18,12 +18,8 @@
       $_SESSION['id_user'] = $row['id_user'];
       $_SESSION['nama'] = $row['nama'];
       $_SESSION['akses'] = $row['akses'];
-
-      if($_SESSION['akses'] === "admin") {
-        header("location: dashboard.php");
-      } else {
-        header("location: dashboard_user.php");
-      }
+      header("location: dashboard.php");
+      
     } else {
       header("location: login.php?pesan=gagal");
     }

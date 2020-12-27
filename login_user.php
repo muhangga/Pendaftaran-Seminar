@@ -1,31 +1,34 @@
-<?php
-   error_reporting(0);
+<?php 
+  session_start();
+  include("function/koneksi.php");
 
-   include "function/koneksi.php";
+  if(isset($_SESSION['id_user']) > 0) {
+    header("location: dashboard_user.php");
+  }
 
-   if(isset($_SESSION['id_user']) > 0) {
-      header("location: dashboard.php");
-   }
+  if (isset($_POST['login'])) {
+    $username = htmlspecialchars($_POST['username']);
+    $password = md5(htmlspecialchars($_POST['password']));
 
-   if (isset($_POST['register'])) {
-      $nama = htmlspecialchars($_POST['nama']);
-      $username = htmlspecialchars($_POST['username']);
-      $password = md5(htmlspecialchars($_POST['password']));
-      $akses = "admin";
+    $query = mysqli_query($koneksi, "SELECT * FROM tbl_user WHERE username='$username' AND password='$password'");
 
-      $query = mysqli_query($koneksi, "INSERT into tbl_user VALUES ('', '$nama', '$username', '$password', '$akses')");
-      $result = mysqli_fetch_assoc($query);
-
-      if (isset($query)) {
-         echo "<script>alert('Register Berhasil, Silahkan login!');
-                     document.location.href='login.php';
-              </script>";
+    if (mysqli_num_rows($query) > 0) {
+      $row = mysqli_fetch_array($query);
+      
+      $_SESSION['id_user'] = $row['id_user'];
+      $_SESSION['nama'] = $row['nama'];
+      $_SESSION['akses'] = $row['akses'];
+      
+      if (isset($_SESSION['akses']) === "user") {
+        header("location: dashboard_user.php");
       } else {
-         echo "<script>alert('Register gagal!');
-                     document.location.href='register.php';
-              </script>";
+        header("location: login_user.php");
       }
-   }
+
+    } else {
+      header("location: login_user.php?pesan=gagal");
+    }
+  }
 
 ?>
 
@@ -40,7 +43,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Register</title>
+  <title>Login</title>
 
   <!-- Custom fonts for this template-->
   <link href="assets/templates/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -68,37 +71,35 @@
               <div class="col-lg-8">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900">Register</h1>
+                    <h1 class="h4 text-gray-900">Login User</h1>
                     <div class="garis-bawah mb-4"></div>
                   </div>
-                  <form  action="#" method="POST" class="user">
-                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="nama" name="nama" placeholder="Masukan nama" required>
-                    </div>
 
+                  <?php 
+                  if (isset($_GET['pesan'])) {
+                      if($_GET['pesan']=="gagal"){
+                        echo "<script type='text/javascript'>alert('Username atau Password salah!')</script>";
+                    }else if($_GET['pesan'] == "logout"){
+                        echo "<script type='text/javascript'>alert('Anda telah berhasil logout')</script>";
+                    }else if($_GET['pesan'] == "belum_login"){
+                        echo "<script type='text/javascript'>alert('Anda harus login terlebih dahulu')</script>";
+                    }
+                  }
+
+                ?>
+                  <form action="#" method="POST" class="user">
                     <div class="form-group">
                       <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Masukan username" required>
                     </div>
-                    
-                    <div class="form-group pb-2">
+                    <div class="form-group">
                       <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password" required>
                     </div>
-
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="admin" name="akses" value="admin" checked>
-                        <label class="custom-control-label" for="admin" style="font-size:12px;">Admin</label>
-                    </div>
-                    
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="user" name="akses" value="user">
-                        <label class="custom-control-label" for="user" style="font-size:12px;">User</label>
-                    </div>
                   
-                    <button class="btn btn-daftar btn-user btn-block mt-3" type="submit" name="register">Register</button>
+                    <button class="btn btn-daftar btn-user btn-block" type="submit" name="login">Login</button>
                     <hr>
                   </form>
                   <div class="text-center">
-                    <a class="small" href="login.php">Sudah punya akun?</a>
+                    <a class="small" href="register_user.php">Belum punya akun?</a>
                   </div>
                 </div>
               </div>

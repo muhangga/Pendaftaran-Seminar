@@ -70,8 +70,7 @@ if (isset($_POST['absen'])) {
       </div>
    <?php } 
    else if($cek === 0) { ?>
-      <div class="alert alert-success">Anda sudah Absen, silahkan cetak Sertifikat dilink bawah ini!</div>
-      <a href="sertifikat.php?id_sertifikat=<?= $absen['id_sertifikat'] ?>" class="btn btn-primary" style="font-size:12px;">Cetak Sertifikat</a>
+      <div class="alert alert-success">Anda sudah Absen, sertifikat akan di kirim via email</div>
    <?php } ?>
  
 </div>

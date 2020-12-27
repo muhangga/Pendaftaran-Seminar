@@ -72,7 +72,7 @@
                            </div>
                         </div>
                         <h2 class="pt-3 text-white">Pendaftaran Seminar</h2>
-                        <p>Silahkan daftar terlebih dahulu untuk mengikuti <br> Seminar di Dinas Pendidikan</p>
+                        <p>Silahkan daftar terlebih dahulu untuk mengikuti <br> Seminar di Pusat Diklat SDM Lingkungan Hidup dan Kehutanan</p>
                      </div>
                   </div>
                </div>

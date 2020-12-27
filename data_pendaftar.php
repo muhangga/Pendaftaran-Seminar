@@ -3,6 +3,8 @@
    include("component/sidebar.php");
    include("function/koneksi.php");
 
+   $id_user = $_SESSION['id_user'];
+
    if (!isset($_SESSION['id_user'])) {
       header("location: login.php?pesan=belum_login");
    }
@@ -11,11 +13,13 @@
       $email = htmlspecialchars($_POST['email']);
       $nama = htmlspecialchars($_POST['nama']);
       $instansi = htmlspecialchars($_POST['instansi']);
+      $alamat = htmlspecialchars($_POST['alamat']);
       $jenis_kelamin = $_POST['jenis_kelamin'];
       $no_hp = htmlspecialchars($_POST['no_hp']);
       $tanggal = date("d/m/Y h:i:s");
+      $status = "1";
 
-      $query = mysqli_query($koneksi, "INSERT into tbl_daftar VALUES ('', '$email', '$nama', '$instansi', '$jenis_kelamin', '$no_hp', '$tanggal')");
+      $query = mysqli_query($koneksi, "INSERT into tbl_daftar VALUES ('', '$id_user', '$email', '$nama', '$instansi', '$alamat', '$jenis_kelamin', '$no_hp', '$tanggal', '$status')");
 
       if (isset($query)) {
          echo "<script>alert('Data berhasil ditambahkan!');
@@ -35,6 +39,8 @@
    </div>
 
    <form action="" method="POST" style="font-size:12px;">
+
+   <input type="hidden" name="id_user" value="<?= $id_user; ?>">
    
     <div class="row">
       <div class="col-md-6">
@@ -61,27 +67,34 @@
       <div class="col-md-6">
           <div class="form-group">
             <label for="no_hp">No Telepon</label>
-            <input type="text" class="form-control form-control-sm" id="no_hp" name="no_hp" autofocus required>
+            <input type="number" class="form-control form-control-sm" id="no_hp" name="no_hp" autofocus required>
           </div>
       </div>
         
-        <div class="col-md-2">
+        <div class="col-md-2 mt-4">
           <label for="jk" style="font-size:14px;">Jenis Kelamin : </label>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-2 mt-4">
           <div class="custom-control custom-radio custom-control-inline">
               <input type="radio" class="custom-control-input" id="laki-laki" name="jenis_kelamin" value="Laki-laki" checked>
               <label class="custom-control-label" for="laki-laki">Laki-laki</label>
           </div>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-2 mt-4">
           <div class="custom-control custom-radio custom-control-inline">
               <input type="radio" class="custom-control-input" id="perempuan" name="jenis_kelamin" value="Perempuan">
               <label class="custom-control-label" for="perempuan">Perempuan</label>
           </div>
         </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="alamat">Alamat</label>
+            <input type="text" class="form-control form-control-sm" id="alamat" name="alamat" required>
+          </div>
+      </div>
 
     </div>
     <button type="submit" class="btn btn-primary btn-block text-center mt-4" name="tambah_data">Tambah Data</button>
@@ -97,6 +110,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead style="font-size:14px">
                     <tr>
+                      <th>No</th>
                       <th>Email</th>
                       <th>Nama</th>
                       <th>Asal Instansi</th>
@@ -112,8 +126,10 @@
                $query = mysqli_query($koneksi, "SELECT * FROM tbl_daftar"); ?>
 
                 <tbody style="font-size:13px">
-                  <?php foreach($query as $row) : ?>
+                  <?php $no = 1;
+                  foreach($query as $row) : ?>
                     <tr>
+                      <td><?= $no++; ?></td>
                       <td><?= $row['nama'] ?></td>
                       <td><?= $row['email'] ?></td>
                       <td><?= $row['instansi'] ?></td>
@@ -124,7 +140,6 @@
                       <td width="15%">
                         <a href="hapus.php?id_daftar=<?= $row['id_daftar'] ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data?');" class="btn btn-danger btn-sm align-items-center" title="Hapus"><i class="fas fa-trash" style="font-size:12px;"></i></a>
                         <a href="edit.php?id_daftar=<?= $row['id_daftar'] ?>" class="btn btn-success btn-sm align-items-center" title="Edit"><i class="fas fa-edit" style="font-size:12px;"></i></a>
-                        <a href="sertifikat.php?id_daftar=<?= $row['id_daftar'] ?>" class="btn btn-info btn-sm align-items-center" title="Cetak Sertifikat <?= $row['nama'] ?>" target="_blank"><i class="fas fa-file-import" style="font-size:12px;"></i></a>
                       </td>
                    </tr>
                    <?php endforeach; ?>

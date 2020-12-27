@@ -11,6 +11,10 @@ if (!isset($_SESSION['id_user'])) {
    header("location: login.php?pesan=belum_login");
 }
 
+if (isset($_SESSION['akses']) !== "admin") {
+      header("location:dashboard_user.php");
+   }
+
 $query = mysqli_query($koneksi, "SELECT * FROM tbl_daftar WHERE id_daftar='$id_daftar'");
 $row = mysqli_fetch_array($query);
 

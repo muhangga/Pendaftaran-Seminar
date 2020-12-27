@@ -11,18 +11,18 @@
       $nama = htmlspecialchars($_POST['nama']);
       $username = htmlspecialchars($_POST['username']);
       $password = md5(htmlspecialchars($_POST['password']));
-      $akses = "admin";
+      $akses = "user";
 
       $query = mysqli_query($koneksi, "INSERT into tbl_user VALUES ('', '$nama', '$username', '$password', '$akses')");
       $result = mysqli_fetch_assoc($query);
 
       if (isset($query)) {
-         echo "<script>alert('Register Berhasil, Silahkan login!');
-                     document.location.href='login.php';
+         echo "<script>alert('Akun anda sudah terdaftar, silahkan login untuk daftar seminar!');
+                     document.location.href='login_user.php';
               </script>";
       } else {
-         echo "<script>alert('Register gagal!');
-                     document.location.href='register.php';
+         echo "<script>alert('Daftar akun gagal, silahkan coba lagi');
+                     document.location.href='register_user.php';
               </script>";
       }
    }
@@ -83,22 +83,12 @@
                     <div class="form-group pb-2">
                       <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password" required>
                     </div>
-
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="admin" name="akses" value="admin" checked>
-                        <label class="custom-control-label" for="admin" style="font-size:12px;">Admin</label>
-                    </div>
-                    
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="user" name="akses" value="user">
-                        <label class="custom-control-label" for="user" style="font-size:12px;">User</label>
-                    </div>
                   
                     <button class="btn btn-daftar btn-user btn-block mt-3" type="submit" name="register">Register</button>
                     <hr>
                   </form>
                   <div class="text-center">
-                    <a class="small" href="login.php">Sudah punya akun?</a>
+                    <a class="small" href="login_user.php">Sudah punya akun?</a>
                   </div>
                 </div>
               </div>

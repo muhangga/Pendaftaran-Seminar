@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Creative - Start Bootstrap Theme</title>
+        <title>Pusat Diklat SDM Lingkungan Hidup dan Kehutanan</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -37,7 +37,7 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
                     </ul>
                     <ul class="navbar-nav ml-2 my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login.php">Login</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login_user.php">Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -46,13 +46,13 @@
         <header class="masthead" ">
             <div class="container h-100">
                 <div class="row h-100 align-items-center justify-content-center text-center">
-                    <div class="col-lg-10 align-self-end">
-                        <h1 class="text-uppercase text-white font-weight-bold">Selamat Datang di Dinas Pendidikan</h1>
+                    <div class="col-lg-12 align-self-end">
+                        <h1 class="text-uppercase text-white font-weight-bold">Pusat Diklat SDM Lingkunga Hidup dan Kehutanan</h1>
                         <hr class="divider my-4" />
                     </div>
                     <div class="col-lg-8 align-self-baseline">
                         <p class="text-white-75 font-weight-light mb-5">Daftarlah disini untuk seminar</p>
-                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="dashboard_user.php">Daftar</a>
+                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="register_user.php">Daftar</a>
                     </div>
                 </div>
             </div>
@@ -63,20 +63,19 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center">
-                        <h2 class="mt-0">Let's Get In Touch!</h2>
                         <hr class="divider my-4" />
-                        <p class="text-muted mb-5">Ready to start your next project with us? Give us a call or send us an email and we will get back to you as soon as possible!</p>
+                        <p class="text-muted mb-5">Bila ada kendala atau permasalahan dari web ini , silahkan hubungi kontak dibawah ini</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
                         <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
-                        <div>+1 (555) 123-4567</div>
+                        <div>0858-8492-8282</div>
                     </div>
                     <div class="col-lg-4 mr-auto text-center">
                         <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
                         <!-- Make sure to change the email address in BOTH the anchor text and the link target below!-->
-                        <a class="d-block" href="mailto:contact@yourwebsite.com">contact@yourwebsite.com</a>
+                        <a class="d-block" href="mailto:contact@yourwebsite.com">afrhm99@gmail.com</a>
                     </div>
                 </div>
             </div>

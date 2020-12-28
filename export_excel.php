@@ -12,6 +12,7 @@
                echo "<th>Email</th>";
                echo "<th>Nama</th>";
                echo "<th>Asal Instansi</th>";
+               echo "<th>Asal Alamat</th>";
                echo "<th>Jenis Kelamin</th>";
                echo "<th>No Telepon</th>";
                echo "<th>Tanggal</th>";
@@ -22,6 +23,7 @@
                   echo "<td>" . $row['email'] . "</td>";
                   echo "<td>" . $row['nama'] . "</td>";
                   echo "<td>" . $row['instansi'] . "</td>";
+                  echo "<td>" . $row['alamat'] . "</td>";
                   echo "<td>" . $row['jenis_kelamin'] . "</td>";
                   echo "<td>" . $row['no_hp'] . "</td>";
                   echo "<td>" . $row['tanggal'] . "</td>";

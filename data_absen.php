@@ -21,7 +21,7 @@
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead style="font-size:14px">
+                  <thead style="font-size:14px" class="text-center">
                     <tr>
                       <th>No</th>
                       <th>Nama</th>
@@ -37,10 +37,10 @@
                 <tbody style="font-size:13px">
                   <?php foreach($query as $row) : ?>
                     <tr>
-                      <td><?= $no++; ?></td>
+                      <td width="5%"><?= $no++; ?></td>
                       <td><?= $row['nama'] ?></td>
                       <td><?= $row['instansi'] ?></td>
-                      <td width="10%">
+                      <td width="5%" class="text-center">
                         <a href="sertifikat.php?id_sertifikat=<?= $row['id_sertifikat'] ?>" class="btn btn-info btn-sm align-items-center" title="Cetak Sertifikat <?= $row['nama'] ?>" target="_blank"><i class="fas fa-file-import" style="font-size:12px;"></i></a>
                       </td>
                    </tr>

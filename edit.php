@@ -1,6 +1,5 @@
 <?php 
 
-session_start();
 $title['judul'] = "Edit Data Pendaftar"; 
 include("function/koneksi.php");
 include("component/sidebar.php");
@@ -11,9 +10,6 @@ if (!isset($_SESSION['id_user'])) {
    header("location: login.php?pesan=belum_login");
 }
 
-if (isset($_SESSION['akses']) !== "admin") {
-      header("location:dashboard_user.php");
-   }
 
 $query = mysqli_query($koneksi, "SELECT * FROM tbl_daftar WHERE id_daftar='$id_daftar'");
 $row = mysqli_fetch_array($query);
@@ -22,11 +18,12 @@ if (isset($_POST['edit'])) {
    $email = htmlspecialchars($_POST['email']);
    $nama = htmlspecialchars($_POST['nama']);
    $instansi = htmlspecialchars($_POST['instansi']);
+   $alamat = htmlspecialchars($_POST['alamat']);
    $jenis_kelamin = $_POST['jenis_kelamin'];
    $no_hp = htmlspecialchars($_POST['no_hp']);
    $tanggal = date("d/m/Y h:i:s");
 
-   $query = mysqli_query($koneksi, "UPDATE tbl_daftar SET email='$email', nama='$nama', instansi='$instansi', jenis_kelamin='$jenis_kelamin', no_hp='$no_hp', tanggal='$tanggal' WHERE id_daftar='$id_daftar'");
+   $query = mysqli_query($koneksi, "UPDATE tbl_daftar SET email='$email', nama='$nama', instansi='$instansi', alamat='$alamat', jenis_kelamin='$jenis_kelamin', no_hp='$no_hp', tanggal='$tanggal' WHERE id_daftar='$id_daftar'");
 
    if (isset($query)) {
       echo "<script>alert('Data berhasil di edit!');
@@ -66,6 +63,11 @@ if (isset($_POST['edit'])) {
                <input type="text" class="form-control form-control-sm" id="instansi" name="instansi" value="<?= $row['instansi']?>" required>
             </div>
 
+            <div class="form-group">
+               <label for="alamat">Asal Alamat</label>
+               <input type="text" class="form-control form-control-sm" id="alamat" name="alamat" value="<?= $row['alamat']?>" required>
+            </div>
+
             <div class="custom-control custom-radio custom-control-inline">
                <input type="radio" class="custom-control-input" id="laki-laki" name="jenis_kelamin" value="Laki-laki" checked>
                <label class="custom-control-label" for="laki-laki">Laki-laki</label>
@@ -78,7 +80,7 @@ if (isset($_POST['edit'])) {
 
             <div class="form-group mt-3">
                <label for="no_hp">No Telepon</label>
-               <input type="text" class="form-control form-control-sm" id="no_hp" name="no_hp" value="<?= $row['no_hp']?>" required>
+               <input type="number" class="form-control form-control-sm" id="no_hp" name="no_hp" value="<?= $row['no_hp']?>" required>
             </div>
 
             <button type="submit" class="btn btn-primary px-4 py-2 mb-5" name="edit" style="font-size:12px;">Edit</button>

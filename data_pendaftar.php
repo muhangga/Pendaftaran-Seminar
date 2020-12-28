@@ -137,7 +137,7 @@
                       <td><?= $row['jenis_kelamin'] ?></td>
                       <td><?= $row['no_hp'] ?></td>
                       <td><?= $row['tanggal'] ?></td>
-                      <td width="15%">
+                      <td width="10%">
                         <a href="hapus.php?id_daftar=<?= $row['id_daftar'] ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data?');" class="btn btn-danger btn-sm align-items-center" title="Hapus"><i class="fas fa-trash" style="font-size:12px;"></i></a>
                         <a href="edit.php?id_daftar=<?= $row['id_daftar'] ?>" class="btn btn-success btn-sm align-items-center" title="Edit"><i class="fas fa-edit" style="font-size:12px;"></i></a>
                       </td>

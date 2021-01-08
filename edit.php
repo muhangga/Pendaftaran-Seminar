@@ -6,10 +6,9 @@ include("component/sidebar.php");
 
 $id_daftar = $_GET['id_daftar'];
 
-if (!isset($_SESSION['id_user'])) {
+if (!isset($_SESSION['id_admin'])) {
    header("location: login.php?pesan=belum_login");
 }
-
 
 $query = mysqli_query($koneksi, "SELECT * FROM tbl_daftar WHERE id_daftar='$id_daftar'");
 $row = mysqli_fetch_array($query);

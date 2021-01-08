@@ -3,6 +3,14 @@
 session_start();
 include("function/koneksi.php");
 
+if (!isset($_SESSION['id_admin'])) {
+   header("location: login.php?pesan=belum_login");
+}
+
+if(isset($_SESSION['id_admin']) > 0) {
+   header("location: dashboard.php");
+}
+
 $id_sertifikat = $_GET['id_sertifikat'];
 
 $query = mysqli_query($koneksi, "SELECT * FROM tbl_sertifikat WHERE id_sertifikat='$id_sertifikat'");

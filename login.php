@@ -2,28 +2,28 @@
   session_start();
   include("function/koneksi.php");
 
-  if(isset($_SESSION['id_user']) > 0) {
+  if(isset($_SESSION['id_admin']) > 0) {
     header("location: dashboard.php");
   }
-
+  
   if (isset($_POST['login'])) {
     $username = htmlspecialchars($_POST['username']);
     $password = md5(htmlspecialchars($_POST['password']));
-
-    $query = mysqli_query($koneksi, "SELECT * FROM tbl_user WHERE username='$username' AND password='$password'");
-
+    $query = mysqli_query($koneksi, "SELECT * FROM tbl_admin WHERE username='$username' AND password='$password'");
+    
     if (mysqli_num_rows($query) > 0) {
       $row = mysqli_fetch_array($query);
-      
-      $_SESSION['id_user'] = $row['id_user'];
+
+      $_SESSION['id_admin'] = $row['id_admin'];
       $_SESSION['nama'] = $row['nama'];
       $_SESSION['akses'] = $row['akses'];
+
       header("location: dashboard.php");
-      
     } else {
       header("location: login.php?pesan=gagal");
     }
   }
+  
 
 ?>
 
@@ -79,6 +79,7 @@
                     }else if($_GET['pesan'] == "belum_login"){
                         echo "<script type='text/javascript'>alert('Anda harus login terlebih dahulu')</script>";
                     }
+                    
                   }
 
                 ?>

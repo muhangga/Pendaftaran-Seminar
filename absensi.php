@@ -4,10 +4,10 @@ session_start();
 error_reporting(0);
 $title['judul'] = "Absensi"; 
 include("function/koneksi.php");
-include("component/sidebar.php");
+include("component/sidebar_user.php");
 
 if (!isset($_SESSION['id_user'])) {
-   header("location: login.php?pesan=belum_login");
+   header("location: login_user.php?pesan=belum_login");
 }
 
 $id_user = $_SESSION['id_user'];

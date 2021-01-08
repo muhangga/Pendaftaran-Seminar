@@ -1,9 +1,8 @@
 <?php 
-   error_reporting(0);
    session_start();
    include ("function/koneksi.php");
-   $id_admin = $_SESSION['id_admin'];
-   $query = mysqli_query($koneksi, "SELECT * FROM tbl_admin WHERE id_user='$id_admin'");
+   $id_user = $_SESSION['id_user'];
+   $query = mysqli_query($koneksi, "SELECT * FROM tbl_user WHERE id_user='$id_user'");
    $row = mysqli_fetch_assoc($query);
 ?>
 
@@ -54,25 +53,41 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item">
-   <a class="nav-link mt-3" href="dashboard.php">
+   <a class="nav-link mt-3" href="dashboard_user.php">
       <i class="fas fa-fw fa-home"></i>
       <span>Dashboard</span>
    </a>
 </li>
 
 <li class="nav-item">
-   <a class="nav-link" href="data_pendaftar.php">
-      <i class="fas fa-fw fa-list-alt"></i>
-      <span>Data Pendaftar </span>
+   <a class="nav-link" href="daftar.php">
+      <i class="fas fa-fw fa-list"></i>
+      <span>Daftar Seminar</span>
    </a>
 </li>
+<?php 
+   
+   $q = mysqli_query($koneksi, "SELECT * FROM tbl_daftar WHERE id_user='$id_user'");
+   $rows = mysqli_fetch_array($q);
+   $cek = mysqli_num_rows($q);
 
-<li class="nav-item">
-   <a class="nav-link mb-3" href="data_absen.php">
-      <i class="fas fa-fw fa-check"></i>
-      <span>Data Absen</span>
-   </a>
-</li>
+   if($cek > 0) {?>
+   <li class="nav-item">
+      <a class="nav-link mb-3" href="absensi.php?id_user=<?= $row['id_user'] ?>">
+         <i class="fas fa-fw fa-check"></i>
+         <span>Absensi Sertifikat</span>
+      </a>
+   </li>
+   <?php } ?>
+
+   <!-- <?php if($cek === 0) { ?>
+      <li class="nav-item">
+      <a class="nav-link mb-3" href="dummy_absen.php?id_user=<?= $row['id_user'] ?>">
+         <i class="fas fa-fw fa-check"></i>
+         <span>Absensi Sertifikat</span>
+      </a>
+   </li>
+   <?php } ?> -->
 
 
 <hr class="sidebar-divider mb-4">

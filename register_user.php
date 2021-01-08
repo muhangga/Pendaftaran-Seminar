@@ -4,7 +4,7 @@
    include "function/koneksi.php";
 
    if(isset($_SESSION['id_user']) > 0) {
-      header("location: dashboard.php");
+      header("location: dashboard_user.php");
    }
 
    if (isset($_POST['register'])) {

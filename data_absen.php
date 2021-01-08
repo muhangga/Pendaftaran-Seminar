@@ -3,14 +3,14 @@
    include("component/sidebar.php");
    include("function/koneksi.php");
 
-   if (!isset($_SESSION['id_user'])) {
+   if (!isset($_SESSION['id_admin'])) {
       header("location: login.php?pesan=belum_login");
    }
 ?>
 
 <div class="container-fluid">
    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h4 mb-0 text-gray-800">Data Absesn</h1>
+      <h1 class="h4 mb-0 text-gray-800">Data Absen</h1>
    </div>
 <!-- 
    <div class="mb-2 d-flex justify-content-end mt-5">
@@ -42,6 +42,7 @@
                       <td><?= $row['instansi'] ?></td>
                       <td width="5%" class="text-center">
                         <a href="sertifikat.php?id_sertifikat=<?= $row['id_sertifikat'] ?>" class="btn btn-info btn-sm align-items-center" title="Cetak Sertifikat <?= $row['nama'] ?>" target="_blank"><i class="fas fa-file-import" style="font-size:12px;"></i></a>
+                        <a href="hapus.php?id_sertifikat=<?= $row['id_sertifikat'] ?>"  onclick="return confirm('Apakah anda yakin ingin menghapus data?');" class="btn btn-danger btn-sm align-items-center" title="Hapus"><i class="fas fa-trash" style="font-size:12px;"></i></a>
                       </td>
                    </tr>
                    <?php endforeach; ?>

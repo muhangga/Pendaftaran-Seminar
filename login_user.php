@@ -13,18 +13,13 @@
     $query = mysqli_query($koneksi, "SELECT * FROM tbl_user WHERE username='$username' AND password='$password'");
 
     if (mysqli_num_rows($query) > 0) {
-      $row = mysqli_fetch_array($query);
+      $row = mysqli_fetch_assoc($query);
       
       $_SESSION['id_user'] = $row['id_user'];
       $_SESSION['nama'] = $row['nama'];
       $_SESSION['akses'] = $row['akses'];
-      
-      if (isset($_SESSION['akses']) === "user") {
-        header("location: dashboard_user.php");
-      } else {
-        header("location: login_user.php");
-      }
 
+      header("location: dashboard_user.php"); 
     } else {
       header("location: login_user.php?pesan=gagal");
     }

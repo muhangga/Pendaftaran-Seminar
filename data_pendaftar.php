@@ -3,9 +3,9 @@
    include("component/sidebar.php");
    include("function/koneksi.php");
 
-   $id_user = $_SESSION['id_user'];
+   $id_admin = $_SESSION['id_admin'];
 
-   if (!isset($_SESSION['id_user'])) {
+   if (!isset($_SESSION['id_admin'])) {
       header("location: login.php?pesan=belum_login");
    }
 
@@ -38,69 +38,7 @@
       <h1 class="h4 mb-0 text-gray-800">Data Pendaftar</h1>
    </div>
 
-   <form action="" method="POST" style="font-size:12px;">
-
-   <input type="hidden" name="id_user" value="<?= $id_user; ?>">
-   
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control form-control-sm" id="email" name="email" autofocus required>
-          </div>
-      </div>
-
-      <div class="col-md-6 mb-2">
-        <div class="form-group">
-            <label for="nama">Nama</label>
-            <input type="text" class="form-control form-control-sm" id="nama" name="nama" autofocus required>
-          </div>
-      </div>
-
-      <div class="col-md-6">
-          <div class="form-group">
-            <label for="instansi">Instansi</label>
-            <input type="text" class="form-control form-control-sm" id="instansi" name="instansi" autofocus required>
-          </div>
-      </div>
-
-      <div class="col-md-6">
-          <div class="form-group">
-            <label for="no_hp">No Telepon</label>
-            <input type="number" class="form-control form-control-sm" id="no_hp" name="no_hp" autofocus required>
-          </div>
-      </div>
-        
-        <div class="col-md-2 mt-4">
-          <label for="jk" style="font-size:14px;">Jenis Kelamin : </label>
-        </div>
-
-        <div class="col-md-2 mt-4">
-          <div class="custom-control custom-radio custom-control-inline">
-              <input type="radio" class="custom-control-input" id="laki-laki" name="jenis_kelamin" value="Laki-laki" checked>
-              <label class="custom-control-label" for="laki-laki">Laki-laki</label>
-          </div>
-        </div>
-
-        <div class="col-md-2 mt-4">
-          <div class="custom-control custom-radio custom-control-inline">
-              <input type="radio" class="custom-control-input" id="perempuan" name="jenis_kelamin" value="Perempuan">
-              <label class="custom-control-label" for="perempuan">Perempuan</label>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="alamat">Alamat</label>
-            <input type="text" class="form-control form-control-sm" id="alamat" name="alamat" required>
-          </div>
-      </div>
-
-    </div>
-    <button type="submit" class="btn btn-primary btn-block text-center mt-4" name="tambah_data">Tambah Data</button>
-   </form>
-
-   <div class="mb-2 d-flex justify-content-end mt-5">
+   <div class="mb-2 d-flex justify-content-end mt-2">
          <a href="export_excel.php" class="btn-sm btn-success mr-2"><i class="fas fa-plus mx-1 my-1">&nbsp Export to Excel</i></a>
       </div>
 
@@ -138,7 +76,7 @@
                       <td><?= $row['no_hp'] ?></td>
                       <td><?= $row['tanggal'] ?></td>
                       <td width="10%">
-                        <a href="hapus.php?id_daftar=<?= $row['id_daftar'] ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data?');" class="btn btn-danger btn-sm align-items-center" title="Hapus"><i class="fas fa-trash" style="font-size:12px;"></i></a>
+                        <a href="hapus.php?id_daftar=<?= $row['id_daftar'] ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data?');" class="btn btn-danger btn-sm align-items-center d-inline" title="Hapus"><i class="fas fa-trash" style="font-size:12px;"></i></a>
                         <a href="edit.php?id_daftar=<?= $row['id_daftar'] ?>" class="btn btn-success btn-sm align-items-center" title="Edit"><i class="fas fa-edit" style="font-size:12px;"></i></a>
                       </td>
                    </tr>

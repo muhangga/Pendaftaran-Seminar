@@ -3,7 +3,7 @@
 
    include "function/koneksi.php";
 
-   if(isset($_SESSION['id_user']) > 0) {
+   if(isset($_SESSION['id_admin']) > 0) {
       header("location: dashboard.php");
    }
 
@@ -13,7 +13,7 @@
       $password = md5(htmlspecialchars($_POST['password']));
       $akses = "admin";
 
-      $query = mysqli_query($koneksi, "INSERT into tbl_user VALUES ('', '$nama', '$username', '$password', '$akses')");
+      $query = mysqli_query($koneksi, "INSERT into tbl_admin VALUES ('', '$nama', '$username', '$password', '$akses')");
       $result = mysqli_fetch_assoc($query);
 
       if (isset($query)) {
@@ -82,16 +82,6 @@
                     
                     <div class="form-group pb-2">
                       <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password" required>
-                    </div>
-
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="admin" name="akses" value="admin" checked>
-                        <label class="custom-control-label" for="admin" style="font-size:12px;">Admin</label>
-                    </div>
-                    
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="user" name="akses" value="user">
-                        <label class="custom-control-label" for="user" style="font-size:12px;">User</label>
                     </div>
                   
                     <button class="btn btn-daftar btn-user btn-block mt-3" type="submit" name="register">Register</button>

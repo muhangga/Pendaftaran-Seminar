@@ -3,17 +3,13 @@
    $title['judul'] = "Dashboard";
    include "function/koneksi.php"; 
    include "component/sidebar.php"; 
-
-   if (isset($_SESSION['akses']) === "user") {
-    header("location: login.php");
-  }
    
-   if (!isset($_SESSION['id_user'])) {
+   if (!isset($_SESSION['id_admin'])) {
       header("location: login.php?pesan=belum_login");
    }
       
    $pendaftar = mysqli_query($koneksi, "SELECT * FROM tbl_daftar");
-   $user = mysqli_query($koneksi, "SELECT * FROM tbl_user");
+   $user = mysqli_query($koneksi, "SELECT * FROM tbl_admin");
    
 ?>
 

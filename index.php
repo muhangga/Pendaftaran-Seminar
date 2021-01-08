@@ -1,6 +1,6 @@
 <?php 
   session_start();
-  if(isset($_SESSION['id_user']) > 0) {
+  if(isset($_SESSION['id_admin'])  > 0) {
     header("location: dashboard.php");
   }
 ?>

@@ -4,7 +4,7 @@
    include "function/koneksi.php";
 
    if (!isset($_SESSION['id_user'])) {
-      header("location: login.php?pesan=belum_login");
+      header("location: login_user.php?pesan=belum_login");
    }
 
    $id_user = $_SESSION['id_user'];
@@ -31,7 +31,7 @@
       } else {
          echo "<script>alert('Daftar gagal, silahkan coba kembali!');
                      document.location.href='dashboard_user.php';
-              </script>";
+               </script>";
       }
    }
 

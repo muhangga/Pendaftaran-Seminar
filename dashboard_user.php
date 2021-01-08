@@ -2,14 +2,10 @@
 
    $title['judul'] = "Dashboard User";
    include "function/koneksi.php"; 
-   include "component/sidebar.php"; 
+   include "component/sidebar_user.php"; 
    
    if (!isset($_SESSION['id_user'])) {
       header("location: login_user.php?pesan=belum_login");
-   }
-
-   if (isset($_SESSION['akses']) === "admin") {
-      header("location: login_user.php");
    }
 
    $id_user = $_SESSION['id_user'];
